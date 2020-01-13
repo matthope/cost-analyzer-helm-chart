@@ -27,6 +27,9 @@ spec:
 {{- else }}
         imagePullPolicy: Always
 {{- end }}
+        command:
+        - /go/bin/app
+        - -logtostderr=false
 {{- if .Values.networkCosts.resources }}
         resources:
 {{ toYaml .Values.networkCosts.resources | indent 10 }}
