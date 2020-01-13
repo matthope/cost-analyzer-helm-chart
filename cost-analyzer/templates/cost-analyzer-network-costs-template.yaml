@@ -16,6 +16,10 @@ spec:
     metadata:
       labels:
         app: {{ template "cost-analyzer.networkCostsName" . }}
+{{- if .Values.networkCosts.podAnnotations }}
+      annotations:
+{{ toYaml .Values.networkCosts.podAnnotations | indent 18 }}
+{{- end }}
     spec:
       hostNetwork: true
       serviceAccountName: {{ template "cost-analyzer.fullname" . }}
